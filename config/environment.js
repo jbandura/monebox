@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'coms2',
+    podModulePrefix: 'coms2/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
