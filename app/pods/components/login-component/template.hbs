@@ -1,0 +1,12 @@
+<h1 class="js-header">Log in</h1>
+Login form will go here
+
+<div>
+  {{input type="text" value=username class="js-username"}}
+  {{input type="password" value=password class="js-email"}}
+  <button class="js-submit" {{action "login"}}>Submit</button>
+</div>
+
+<p>
+  Logged in: {{if session.isAuthenticated 'Yes' 'No'}}
+</p>

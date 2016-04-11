@@ -1,0 +1,12 @@
+<div>
+  {{input type="text" value=expenseName class="js-expense-name"}}
+  <button class="js-add-expense" {{action "addExpense"}}>Add expense</button>
+</div>
+
+<table class="table js-expenses">
+  {{#each expenses as |expense|}}
+    <tr>
+      <td>{{expense.name}}</td>
+    </tr>
+  {{/each}}
+</table>
