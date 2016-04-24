@@ -1,4 +1,18 @@
 export default function() {
+  this.namespace = '/api/v1';
+
+  this.post('/sessions', function(db, request) {
+    const [password, email] = decodeURIComponent(request.requestBody).split('&').map((str) => {
+      return str.replace(/user\[(email|password)\]=/, '');
+    });
+
+    if ( email === 'admin@moneybox.de' && password === '12345678' ) {
+      return {
+        email,
+        token: 'SuperSecretToken!',
+      };
+    }
+  });
 
   // These comments are here to help you get started. Feel free to delete them.
 
