@@ -14,6 +14,10 @@ export default function() {
     }
   });
 
+  this.get('/vaults');
+  this.get('/vaults/:id');
+  this.post('/vaults');
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

@@ -7,6 +7,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('dashboard', { path: '/'});
+  this.route('vault', function() {
+    this.route('new');
+    this.route('edit', { path: ':vault_id/edit'});
+  });
   this.route('login');
 });
 

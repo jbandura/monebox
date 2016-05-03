@@ -1,7 +1,12 @@
-<ul>
-  <li>
-    {{link-to "Dashboard" 'dashboard'}}
-  </li>
-  <li><a href="#" {{action 'logout'}}>Logout</a></li>
-</ul>
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav nav-pills pull-right">
+      <li>
+        {{link-to "Dashboard" 'dashboard'}}
+      </li>
+      <li><a href="#" {{action 'logout'}}>Logout</a></li>
+    </ul>
+  </div>
+</div>
+
 {{outlet}}

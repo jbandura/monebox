@@ -1,0 +1,18 @@
+{{#lf-form validityChanged=(action (mut isValid)) rules=rules as |v|}}
+  {{lf-input
+    name="vaultName"
+    property=formData.name
+    on-update=(action "valueChanged" "name")
+    validate=v
+    class="js-vault-name"
+  }}
+  {{lf-input
+    name="startState"
+    property=formData.state
+    on-update=(action "valueChanged" "state")
+    validate=v
+    class="js-start-state"
+  }}
+{{/lf-form}}
+
+<button class="btn btn-primary js-submit" disabled={{not isValid}} {{action "submit" formData}}>Create vault</button>
