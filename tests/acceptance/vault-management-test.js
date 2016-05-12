@@ -73,3 +73,17 @@ test('edit vault form has all data filled in', function(assert) {
   assert.equal(actualState, '1000');
 });
 
+test('editing vault gets persisted', function(assert) {
+  fillInAndBlur('.js-vault-name input', 'New vault');
+  fillInAndBlur('.js-start-state input', '5000');
+  click('.js-submit');
+
+  andThen(() => {
+    assert.equal(currentRouteName(), 'dashboard');
+    const newVault = find('.js-vault').last();
+    const vaultName = newVault.find('.js-vault-name').text().trim();
+
+    assert.equal(vaultName, 'New vault');
+  });
+});
+

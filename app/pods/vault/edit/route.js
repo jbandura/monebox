@@ -13,7 +13,14 @@ export default Route.extend({
   },
 
   actions: {
-    save() {
+    save(formData) {
+      let vault = this.modelFor('vault/edit');
+      vault.setProperties(
+        formData.getProperties('name', 'state')
+      );
+      vault.save().then(() => {
+        this.transitionTo('dashboard');
+      });
     }
   }
 });
