@@ -1,6 +1,8 @@
 import Mirage, {faker} from 'ember-cli-mirage';
 
 export default Mirage.Factory.extend({
-  name: faker.random.word,
-  state: faker.random.number
+  name(i) {
+    return `Vault ${i}`;
+  },
+  state() { return faker.random.number(); }
 });

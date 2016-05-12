@@ -1,0 +1,14 @@
+.c-vault-item {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  background-color: $gray-color;
+
+  &__text-container {
+    padding: 15px;
+  }
+
+  &__link {
+    display: block;
+  }
+}

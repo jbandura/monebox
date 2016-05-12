@@ -1,12 +1,10 @@
-{{#each vaults as |vault|}}
-  {{vault-item
-    name=vault.name
-    id=vault.id
+<p>
+  {{vault-listing
+    vaults=vaults
     editVaultAction=attrs.editVaultTransition
+    newVaultAction=attrs.newVaultTransition
   }}
-{{/each}}
-
-<button class="btn btn-primary js-create-vault" {{action attrs.newVaultTransition}}>Create vault</button>
+</p>
 
 <div>
   {{input type="text" value=expenseName class="js-expense-name"}}

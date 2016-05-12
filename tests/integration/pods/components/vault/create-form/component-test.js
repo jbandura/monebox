@@ -15,14 +15,14 @@ test('vault name should be required', function(assert){
   this.render(hbs`{{vault/create-form}}`);
   fillIn(this, '.js-vault-name input', ' ');
   const classNames = $('.js-vault-name').attr('class').split(' ');
-  assert.ok(classNames.includes('has-error'));
+  assert.ok(classNames.indexOf('has-error') !== -1);
 });
 
 test('vault startState should be numeric', function(assert) {
   this.render(hbs`{{vault/create-form}}`);
   fillIn(this, '.js-start-state input', 'foo');
   const classNames = $('.js-start-state').attr('class').split(' ');
-  assert.ok(classNames.includes('has-error'));
+  assert.ok(classNames.indexOf('has-error') !== -1);
 });
 
 test('creating new vault fires appropriate action', function(assert) {

@@ -1,4 +1,15 @@
-<h1 class="js-vault-name {{cssNamespace}}__title">{{name}}</h1>
-<a href="#" {{action "editVaultAction" id}} class="js-edit-vault {{cssNamespace}}__link">
+<div class="{{cssNamespace}}__text-container">
+  <h4 class="js-vault-name {{cssNamespace}}__title">
+    {{vault.name}}
+  </h4>
+  <div class="{{cssNamespace}}__state">
+    {{vault.state}}
+  </div>
+</div>
+<a
+  href="#"
+  {{action "editVaultAction" vault.id}}
+  class="js-edit-vault btn btn-sm btn-primary {{cssNamespace}}__link"
+>
   Edit vault
 </a>

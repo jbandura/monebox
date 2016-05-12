@@ -1,0 +1,12 @@
+{{#each vaults as |vault|}}
+  {{vault-item
+    vault=vault
+    editVaultAction=attrs.editVaultAction
+    class="js-vault"
+  }}
+{{/each}}
+<a class="js-create-vault" href="#" {{action "newVault"}}>
+  <div class="{{cssNamespace}}__add-btn">
+    Add vault
+  </div>
+</a>
