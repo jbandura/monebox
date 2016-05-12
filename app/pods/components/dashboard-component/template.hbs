@@ -1,10 +1,9 @@
 {{#each vaults as |vault|}}
-  <div class="js-vault">
-    <h1 class="js-vault-name">
-      {{vault.name}}
-    </h1>
-    {{link-to 'Edit vault' 'vault.edit' vault class="js-edit-vault"}}
-  </div>
+  {{vault-item
+    name=vault.name
+    id=vault.id
+    editVaultAction=attrs.editVaultTransition
+  }}
 {{/each}}
 
 <button class="btn btn-primary js-create-vault" {{action attrs.newVaultTransition}}>Create vault</button>
