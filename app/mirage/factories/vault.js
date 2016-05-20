@@ -4,5 +4,5 @@ export default Mirage.Factory.extend({
   name(i) {
     return `Vault ${i}`;
   },
-  state() { return faker.random.number(); }
+  startState() { return faker.random.number(); }
 });

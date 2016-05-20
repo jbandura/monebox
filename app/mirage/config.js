@@ -14,6 +14,9 @@ export default function() {
     }
   });
 
+  this.get('/users');
+  this.get('/users/:id');
+  // VAULTS
   this.get('/vaults');
   this.get('/vaults/:id');
   this.put('/vaults/:id');

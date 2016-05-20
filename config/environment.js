@@ -6,7 +6,7 @@ module.exports = function(environment) {
     podModulePrefix: 'coms2/pods',
     environment: environment,
     baseURL: '/',
-    locationType: 'hash',
+    locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -21,6 +21,9 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
