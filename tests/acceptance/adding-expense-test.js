@@ -1,6 +1,6 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'coms2/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'coms2/tests/helpers/ember-simple-auth';
+import moduleForAcceptance from 'moneybox/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'moneybox/tests/helpers/ember-simple-auth';
 
 moduleForAcceptance('Acceptance | adding expense', {
   beforeEach() {

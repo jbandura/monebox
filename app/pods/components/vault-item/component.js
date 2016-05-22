@@ -10,6 +10,10 @@ export default Component.extend({
   actions: {
     editVaultAction(id) {
       this.attrs.editVaultAction(id);
+    },
+
+    withdraw(id) {
+      this.attrs.withdrawAction(id);
     }
   }
 });

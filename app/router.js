@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('vault', function() {
     this.route('new');
     this.route('edit', { path: ':vault_id/edit'});
+    this.route('withdraw', { path: ':vault_id/withdraw' });
   });
   this.route('login');
 });

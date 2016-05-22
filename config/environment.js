@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'coms2',
-    podModulePrefix: 'coms2/pods',
+    modulePrefix: 'moneybox',
+    podModulePrefix: 'moneybox/pods',
     environment: environment,
     baseURL: '/',
     locationType: process.env.EMBER_CLI_ELECTRON ? 'hash' : 'auto',
@@ -15,6 +15,7 @@ module.exports = function(environment) {
     },
 
     APP: {
+      isElectron: process.env.EMBER_CLI_ELECTRON
       // Here you can pass flags/options to your application instance
       // when it is created
     }

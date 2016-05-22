@@ -1,0 +1,11 @@
+<h1>Withdraw from {{vault.name}}</h1>
+
+{{#lf-form rules=rules as |v|}}
+  {{lf-input
+    name="Amount"
+    placeholder="Amount"
+    class="js-amount"
+    on-update=(action 'amountUpdated')
+  }}
+  <button class="js-submit" {{action 'submit' formData}}>Withdraw</button>
+{{/lf-form}}

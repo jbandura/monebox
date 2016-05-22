@@ -1,12 +1,6 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'coms2/tests/helpers/module-for-acceptance';
-import { authenticateSession } from 'coms2/tests/helpers/ember-simple-auth';
-
-function fillInAndBlur(selector, content) {
-  fillIn(selector, content);
-  triggerEvent(selector, 'blur');
-  triggerEvent(selector, 'change');
-}
+import moduleForAcceptance from 'moneybox/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'moneybox/tests/helpers/ember-simple-auth';
 
 let vault;
 

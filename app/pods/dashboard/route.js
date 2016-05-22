@@ -21,6 +21,10 @@ export default Route.extend(AuthenticatedRoute, {
 
     transitionToEditVault(id) {
       this.transitionTo('vault.edit', id);
+    },
+
+    transitionToWithdraw(id) {
+      this.transitionTo('vault.withdraw', id);
     }
   }
 });
