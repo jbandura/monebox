@@ -8,7 +8,7 @@
   }}
   {{lf-input
     name="startState"
-    property=formData.state
+    property=formData.startState
     on-update=(action "valueChanged" "state")
     validate=v
     class="js-start-state"
@@ -16,3 +16,6 @@
 {{/lf-form}}
 
 <button class="btn btn-primary js-submit" disabled={{not isValid}} {{action "submit" formData}}>Create vault</button>
+{{#if editing}}
+  <button class="btn btn-danger js-delete" {{action "delete"}}>Delete vault</button>
+{{/if}}

@@ -7,7 +7,7 @@ export default Component.extend({
   formData: computed('vault', function() {
     if(this.get('vault')) {
       return Ember.Object.create(
-        this.get('vault').getProperties('name', 'state')
+        this.get('vault').getProperties('name', 'startState')
       );
     }
     return Ember.Object.create({
@@ -23,6 +23,10 @@ export default Component.extend({
   actions: {
     submit(formData) {
       this.attrs.onSubmit(formData);
+    },
+
+    delete() {
+      this.attrs.onDelete();
     },
 
     valueChanged(name, value) {

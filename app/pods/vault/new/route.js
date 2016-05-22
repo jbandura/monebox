@@ -4,14 +4,14 @@ const { Route, inject: { service } } = Ember;
 
 export default Route.extend({
   store: service(),
-  session: service(),
+  currentUserProvider: service(),
   actions: {
     submit(formData) {
       const { name, state } =  formData.getProperties('name', 'state');
       const newVault = this.get('store').createRecord('vault', {
         name,
         startState: state,
-        user: this.get('session.data').authenticated.user_id
+        user: this.get('currentUserProvider.currentUser')
       });
       newVault.save().then(() => {
         this.transitionTo('dashboard');

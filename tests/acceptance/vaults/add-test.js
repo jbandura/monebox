@@ -1,6 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'coms2/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'coms2/tests/helpers/ember-simple-auth';
+import Ember from 'ember';
 
 function fillInAndBlur(selector, content) {
   fillIn(selector, content);
@@ -8,10 +9,22 @@ function fillInAndBlur(selector, content) {
   triggerEvent(selector, 'change');
 }
 
+const currentUserStub = (userStub) => {
+  return Ember.Service.extend({
+    currentUser: userStub
+  });
+};
+
+function stubCurrentUser(app, userStub) {
+  app.register('service:mock-current-user-provider', currentUserStub(userStub));
+  app.inject('route', 'currentUserProvider', 'service:mock-current-user-provider');
+}
+
 moduleForAcceptance('Acceptance | creating vault', {
   beforeEach() {
+    stubCurrentUser(this.application, { id: 1, email: 'testuser@email.com' });
     authenticateSession(this.application);
-    server.create('vault', { name: 'Test Vault', state: 1000});
+    server.create('vault', { name: 'Test Vault', state: 1000, user_id: 1 });
     visit('/');
   }
 });
@@ -53,37 +66,6 @@ test('clicking edit takes user to edit vault form', function(assert) {
 
   andThen(() => {
     assert.equal(currentRouteName(), 'vault.edit');
-  });
-});
-
-moduleForAcceptance('Acceptance | editing vault', {
-  beforeEach() {
-    authenticateSession(this.application);
-    const vault = server.create('vault', { name: 'Test Vault', state: 1000});
-    visit(`vault/${vault.id}/edit/`);
-  }
-});
-
-
-test('edit vault form has all data filled in', function(assert) {
-  const actualName = find('.js-vault-name input').val().trim();
-  const actualState = find('.js-start-state input').val().trim();
-
-  assert.equal(actualName, 'Test Vault');
-  assert.equal(actualState, '1000');
-});
-
-test('editing vault gets persisted', function(assert) {
-  fillInAndBlur('.js-vault-name input', 'New vault');
-  fillInAndBlur('.js-start-state input', '5000');
-  click('.js-submit');
-
-  andThen(() => {
-    assert.equal(currentRouteName(), 'dashboard');
-    const newVault = find('.js-vault').last();
-    const vaultName = newVault.find('.js-vault-name').text().trim();
-
-    assert.equal(vaultName, 'New vault');
   });
 });
 

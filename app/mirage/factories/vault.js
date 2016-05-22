@@ -1,8 +1,7 @@
-import Mirage, {faker} from 'ember-cli-mirage';
+import Mirage from 'ember-cli-mirage';
 
 export default Mirage.Factory.extend({
-  name(i) {
-    return `Vault ${i}`;
-  },
-  startState() { return faker.random.number(); }
+  name: 'Test Vault bla',
+  startState: 1000,
+  user_id: 1
 });
