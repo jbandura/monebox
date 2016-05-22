@@ -5,6 +5,7 @@ const { Route, inject: { service } } = Ember;
 
 export default Route.extend({
   flashMessages: service(),
+  currentUserProvider: service(),
   model({ vault_id: vaultId }) {
     return this.store.findRecord('vault', vaultId);
   },
@@ -14,7 +15,7 @@ export default Route.extend({
     controller.set('vault', model);
   },
 
-  withdrawTask: task(function * (formData){
+  withdrawTask: task(function * (formData) {
     const operation = this.store.createRecord('vault-operation', {
       type: 'withdrawal',
       amount: formData.amount,

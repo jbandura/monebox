@@ -1,6 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'moneybox/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'moneybox/tests/helpers/ember-simple-auth';
+import Ember from 'ember';
 
 function fillInAndBlur(selector, content) {
   fillIn(selector, content);
@@ -8,10 +9,22 @@ function fillInAndBlur(selector, content) {
   triggerEvent(selector, 'change');
 }
 
+const currentUserStub = (userStub) => {
+  return Ember.Service.extend({
+    currentUser: userStub
+  });
+};
+
+function stubCurrentUser(app, userStub) {
+  app.register('service:mock-current-user-provider', currentUserStub(userStub));
+  app.inject('route', 'currentUserProvider', 'service:mock-current-user-provider');
+}
+
 let vault;
 
 moduleForAcceptance('Acceptance | withdrawing funds from vault', {
   beforeEach() {
+    stubCurrentUser(this.application, currentUserStub({ id: 1 }));
     authenticateSession(this.application);
     vault = server.create('vault', { name: 'Test Vault', startState: 1000, user_id: 1 });
   }
